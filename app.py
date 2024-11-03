@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from datetime import datetime
 import random
+import time
 
 app = Flask(__name__)
 
@@ -58,7 +59,7 @@ def process_message(message):
         return "I can help you learn about Python concepts! Try asking about: loops, lists, dictionaries, functions, or classes."
     elif "example" in message:
         return provide_random_example()
-    elif "showtime" in message:
+    elif "timezone" in message:
         return get_time()
     else:
         return f"You said: {message}. Try asking about Python concepts or type 'help' for guidance!"
@@ -93,8 +94,8 @@ def provide_random_example():
     return random.choice(examples)
 
 def get_time():
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    current_time = f'Current time is {timestamp}'
+    timezone = time.tzname
+    current_time = f'Current timezone is {timezone}'
     return current_time
 
 
