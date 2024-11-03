@@ -58,6 +58,8 @@ def process_message(message):
         return "I can help you learn about Python concepts! Try asking about: loops, lists, dictionaries, functions, or classes."
     elif "example" in message:
         return provide_random_example()
+    elif "showtime" in message:
+        return get_time()
     else:
         return f"You said: {message}. Try asking about Python concepts or type 'help' for guidance!"
 
@@ -90,6 +92,10 @@ def provide_random_example():
     ]
     return random.choice(examples)
 
+def get_time():
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    current_time = f'Current time is {timestamp}'
+    return current_time
 
 
 #http://localhost:5000/chat?message=tell+me+about+lists
